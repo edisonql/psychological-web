@@ -2,15 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import get from 'lodash/get'
-import remove from 'lodash/remove'
 import groupBy from 'lodash/groupBy'
-import mapKeys from 'lodash/mapKeys'
 import map from 'lodash/map'
-// import forOwn from 'lodash/forOwn'
-import { Button, Card, Form, Input, Row, Col} from 'antd'
+import { Button, Card, Input, Row, Col} from 'antd'
 import { getData } from '../actions'
 import '../App.css'
-const FormItem = Form.Item
 
 class ExaminationPaper extends React.Component {
     next() {
@@ -40,7 +36,7 @@ class ExaminationPaper extends React.Component {
         [e.name]: this.state[e.name] + parseInt(e.value),
       })
       const option = e.id.split('-')
-      const type = e.name
+      // const type = e.name
       if (option.length > 1) {
         let targetId = ''
         if (option[1] === 'A') {
@@ -48,10 +44,8 @@ class ExaminationPaper extends React.Component {
         } else if (option[1] === 'B') {
           targetId = e.id.replace(option[1], 'A')
         }
-        // targetId = e.id.replace(option[1], 'B')
         const target = document.getElementById(targetId)
         target.value = 5 - e.value
-        console.log(target.name)
         this.setState({
           [target.name]: this.state[target.name] + parseInt(target.value),
         })
@@ -85,13 +79,8 @@ class ExaminationPaper extends React.Component {
     }
 
     renderContent = (scaleData) => {
-      console.log(this.props.form)
-      const { getFieldDecorator } = this.props.form
       const answers = scaleData[this.state.current] && scaleData[this.state.current].answers
       const groupAnswerBySN = answers && groupBy(answers, item => item.sn)
-      console.log(groupAnswerBySN, '[][]')
-      let content = ''
-      let SN = ''
       return (
         <div>
           {
@@ -161,4 +150,4 @@ const mapStateToProps = (state, props) => ({
   categoryKeys: state.scaleModalReducer.categoryKeys,
 })
 
-export default withRouter(connect(mapStateToProps, {getData})(Form.create()(ExaminationPaper)))
+export default withRouter(connect(mapStateToProps, {getData})(ExaminationPaper))

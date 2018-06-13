@@ -5,11 +5,9 @@ import * as result from '../constants'
 
 class Register extends React.Component {
     constructor(props) {
-      super(props);
-      console.log(props.location)
+      super(props)
     }
     render() {
-        console.log(this.props.match.params.resultKey)
         const resultKey = get(this.props, 'match.params.resultKey')
         return (<div style={{ background: '#ECECEC', padding: '30px' }}>
           <Card title={`您的专属性格：${resultKey}`} bordered={false}>
