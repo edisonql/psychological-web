@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import scaleModalReducer from './reducers/scale'
 
 const initialState = {
   name:'111',
@@ -9,4 +10,4 @@ function reducer(state = initialState, action) {
     return state
 }
 
-export default combineReducers({reducer})
+export default combineReducers({ reducer, scaleModalReducer })
