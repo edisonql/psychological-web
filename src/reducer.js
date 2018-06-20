@@ -1,10 +1,7 @@
 import { combineReducers } from 'redux'
 import scaleModalReducer from './reducers/scale'
 
-const initialState = {
-  name:'111',
-  pwd:'222',
-}
+const initialState = {}
 
 function reducer(state = initialState, action) {
     return state
