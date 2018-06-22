@@ -6,8 +6,10 @@ axios.defaults.baseURL = 'http://localhost:3000'
 
 export const getData = () => (dispatch) => {
   axios.get(`/getData`, {
-      headers: { 'Access-Control-Allow-Origin': '*'},
-      'Content-Type': 'application/x-www-form-urlencoded'
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     }).then(({
     data
   }) => {
