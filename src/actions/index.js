@@ -2,7 +2,7 @@ import axios from 'axios'
 // import qs from 'qs'
 // import forEach from 'lodash/forEach'
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://localhost:3001'
 
 export const getData = () => (dispatch) => {
   axios.get(`/getData`, {
