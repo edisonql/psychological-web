@@ -2,11 +2,12 @@ import axios from 'axios'
 // import qs from 'qs'
 // import forEach from 'lodash/forEach'
 
-axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = 'http://localhost:3000'
 
 export const getData = () => (dispatch) => {
   axios.get(`/getData`, {
-      headers: { 'Access-Control-Allow-Origin': '*'}
+      headers: { 'Access-Control-Allow-Origin': '*'},
+      'Content-Type': 'application/x-www-form-urlencoded'
     }).then(({
     data
   }) => {
