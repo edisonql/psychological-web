@@ -13,7 +13,7 @@ class App extends React.Component {
             <Switch>
               <Route path="/result/:resultKey" component={Result}>Result</Route>
               <Route path="/examinationPaper" component={ExaminationPaper}>ExaminationPaper</Route>
-              <Route path="/" component={Main}>Main</Route>
+              <Route exact path="/" component={Main}>Main</Route>
             </Switch>
           </div>
       )
