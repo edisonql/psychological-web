@@ -7,21 +7,21 @@ class Register extends React.Component {
     constructor(props) {
       super(props)
     }
-    reviewHideArea() {
-      const codeInput = document.getElementById('authorizationCode')
-      if (codeInput.value === '3128') {
-        const hideArea = document.getElementsByName('hideArea')
-        hideArea.forEach(element => {
-          element.style.display = 'inline'
-        })
-      }
-    }
-    componentDidMount() {
-      const hideArea = document.getElementsByName('hideArea')
-      hideArea.forEach(element => {
-        element.style.display = 'none'
-      })
-    }
+    // reviewHideArea() {
+    //   const codeInput = document.getElementById('authorizationCode')
+    //   if (codeInput.value === '3128') {
+    //     const hideArea = document.getElementsByName('hideArea')
+    //     hideArea.forEach(element => {
+    //       element.style.display = 'inline'
+    //     })
+    //   }
+    // }
+    // componentDidMount() {
+    //   const hideArea = document.getElementsByName('hideArea')
+    //   hideArea.forEach(element => {
+    //     element.style.display = 'none'
+    //   })
+    // }
 
     render() {
         const resultKey = get(this.props, 'match.params.resultKey')
@@ -29,7 +29,14 @@ class Register extends React.Component {
           <Row style={{margin:'20px'}}>
             <Col span={2}><label>授权码：</label></Col>
             <Col span={4}><Input id="authorizationCode" /></Col>
-            <Col span={4}><Button type="primary" onClick={() => this.reviewHideArea()}>查看隐藏文档</Button></Col>
+            <Col span={4}>
+              <Button
+                type="primary"
+                // onClick={() => this.reviewHideArea()}
+              >
+                查看隐藏文档
+              </Button>
+            </Col>
           </Row>
           <Card title={`您的专属性格：${resultKey}`} bordered={false}>
             {result[resultKey]}

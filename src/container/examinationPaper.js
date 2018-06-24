@@ -41,6 +41,7 @@ class ExaminationPaper extends React.Component {
         [e.name]: this.state[e.name] + parseInt(e.value),
       })
       this.paperResult[e.id] = parseInt(e.value)
+      // this.paperResult = { ...this.paperResult, [e.id]: parseInt(e.value) }
 
       const option = e.id.split('-')
       // const type = e.name
@@ -57,6 +58,7 @@ class ExaminationPaper extends React.Component {
           [target.name]: this.state[target.name] + parseInt(target.value),
         })
         this.paperResult[target.id] = parseInt(target.value)
+        // this.paperResult = { ...this.paperResult, [target.id]: parseInt(target.value)}
       }
       this.setState({ paperResult: this.paperResult })
     }
@@ -94,9 +96,9 @@ class ExaminationPaper extends React.Component {
         gender,
         occupation,
         mobile,
-        paperResult: this.state.paperResult,
+        paperResult: JSON.stringify(this.state.paperResult),
         typeResult: result,
-        everyTypeResult,
+        everyTypeResult: JSON.stringify(everyTypeResult),
       })
       this.props.history.push(`/result/${result}`)
     }
@@ -128,6 +130,7 @@ class ExaminationPaper extends React.Component {
     }
 
     render() {
+      // console.log(this.state, '---')
       const scaleData = get(this.props, 'scaleData', [])
       return <div style={{ background: '#ECECEC', padding: '30px' }}>
         <Card title={scaleData[this.state.current] && scaleData[this.state.current].subject} bordered={false} style={{ width: '100%' }}>

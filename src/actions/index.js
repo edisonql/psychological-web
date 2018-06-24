@@ -1,13 +1,16 @@
 import axios from 'axios'
-// import qs from 'qs'
+import qs from 'qs'
 // import forEach from 'lodash/forEach'
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 export const getData = () => (dispatch) => {
   axios.get(`/getData`, {
       headers: {
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-Control-Allow-Headers': 'x-requested-with,content-type',
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }).then(({
@@ -34,13 +37,13 @@ export const setPersonalInfo = (info) => (dispatch) => {
 }
 
 export const saveResult = (result) => () => {
-  // const data = new URLSearchParams()
-  // data.append('result', 'test1111')
-  axios.get(`/saveResult`, {
-      params: result,
+  // const params = new URLSearchParams()
+  // params.append('result', result)
+  axios.post(`/saveResult`, {
+      data: qs.stringify(result),
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
       }
     }).then(({
     data
